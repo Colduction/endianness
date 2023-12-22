@@ -92,6 +92,46 @@ func BenchmarkLEStringToUint64Slice(b *testing.B) {
 	})
 }
 
+func BenchmarkBEStringToFloat32Slice(b *testing.B) {
+	BenchPerCoreConfigs(b, func(b *testing.B) {
+		b.RunParallel(func(b *testing.PB) {
+			for b.Next() {
+				endianness.BigEndian.StringToFloat32Slice(TEST_STRING)
+			}
+		})
+	})
+}
+
+func BenchmarkLEStringToFloat32Slice(b *testing.B) {
+	BenchPerCoreConfigs(b, func(b *testing.B) {
+		b.RunParallel(func(b *testing.PB) {
+			for b.Next() {
+				endianness.LittleEndian.StringToFloat32Slice(TEST_STRING)
+			}
+		})
+	})
+}
+
+func BenchmarkBEStringToFloat64Slice(b *testing.B) {
+	BenchPerCoreConfigs(b, func(b *testing.B) {
+		b.RunParallel(func(b *testing.PB) {
+			for b.Next() {
+				endianness.BigEndian.StringToFloat64Slice(TEST_STRING)
+			}
+		})
+	})
+}
+
+func BenchmarkLEStringToFloat64Slice(b *testing.B) {
+	BenchPerCoreConfigs(b, func(b *testing.B) {
+		b.RunParallel(func(b *testing.PB) {
+			for b.Next() {
+				endianness.LittleEndian.StringToFloat64Slice(TEST_STRING)
+			}
+		})
+	})
+}
+
 func BenchmarkBEUint16SliceToString(b *testing.B) {
 	BenchPerCoreConfigs(b, func(b *testing.B) {
 		b.RunParallel(func(b *testing.PB) {
